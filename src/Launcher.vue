@@ -248,7 +248,9 @@ export default {
           userInput: {
             bg: "white",
             title: "#295ca3",
-            textBody: "black"
+            textBody: "black",
+            border: "#295ca3 2px solid",
+            shadow: "-2px 3px rgb(247 198 197 / 80%)"
           }
         }
       }

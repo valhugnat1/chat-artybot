@@ -39,7 +39,7 @@
           </splide-slide>
         </splide>
         <button v-else class="sc-suggestions-element" v-for="(suggestion, idx) in suggestions" v-on:click="$emit('sendSuggestion', suggestion.choice)"
-         :key="idx" :style="{'color': colors.userInput.text, 'background': colors.userInput.bg}">{{suggestion.choice}}</button>
+         :key="idx" :style="{'color': colors.userInput.text, 'background': colors.userInput.bg, 'border': colors.userInput.border, 'box-shadow': colors.userInput.shadow}">{{suggestion.choice}}</button>
     </div>
 </template>
 

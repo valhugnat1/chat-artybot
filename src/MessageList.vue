@@ -186,6 +186,7 @@ export default {
   mounted () {
     this.$nextTick(this._scrollDown())
     this.$refs.scrollList.addEventListener('wheel',event => this.scrollUser = true );
+    this.$refs.scrollList.addEventListener('touchmove',event => {this.scrollUser = true});
   },
   updated () {
     var nbMsg = this.$refs.scrollList.getElementsByClassName('sc-message').length
