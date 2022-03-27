@@ -32,13 +32,13 @@
           </template>
       </TextMessage>
       <EmojiMessage v-else-if="message.type === 'emoji'" :data="message.data" />
-      <FileMessage v-else-if="message.type === 'file'" :data="message.data" :messageColors="messageColors" />
+      <FileMessage v-else-if="message.type === 'file'" :data="message.data" :messageColors="sentColorsStyle" />
       <TypingMessage v-else-if="message.type === 'typing'" :messageColors="messageColors" />
       <SystemMessage v-else-if="message.type === 'system'" :data="message.data" :messageColors="messageColors">
           <slot name="system-message-body" :message="message.data">
           </slot>
       </SystemMessage>
-      <RawMessage v-else-if="message.type === 'raw'" :data="message.data" />
+      <RawMessage v-else-if="message.type === 'raw'" :message="message" :data="message.data" :messageColors="sentColorsStyle"/>
     </div>
   </div>
 </template>

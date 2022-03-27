@@ -1,5 +1,5 @@
 <template>
-  <div class="sc-message--file">
+  <div class="sc-message--file" :style="[ message.author === 'me' ? messageColors : {}]">
     <div class="sc-message--file-text">
       <p><span v-html="data.text"></span></p>
     </div>
@@ -12,8 +12,16 @@ export default {
     data: {
       type: Object,
       required: true
+    },
+    message: {
+      type: Object,
+      required: true
+    },
+    messageColors: {
+      type: Object,
+      required: true
     }
-  }
+  }, 
 }
 </script>
 
@@ -64,11 +72,11 @@ export default {
 .sc-message--file-name a:hover {
   color: white;
 }
-.sc-message--content.sent .sc-message--file-text {
+/* .sc-message--content.sent .sc-message--file-text {
   color: white;
   background-color: #365ca7;
   word-wrap: break-word;
-}
+} */
 .sc-message--content.received .sc-message--file {
   /*color: #365ca7;*/
   background-color: white;
