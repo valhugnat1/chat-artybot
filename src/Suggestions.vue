@@ -90,7 +90,8 @@ export default {
   mounted() {
 
     console.log("colors", this.colors)
-
+    
+    
     function getGoogleDistTemps(position) {
 
       var i = 0

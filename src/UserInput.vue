@@ -66,7 +66,7 @@
         <!-- LEGAL -->
         <div v-if="imgUserInput.legale != '' && imgUserInput.legale != undefined">
           <div :class="[showTypingIndicator ? 'cacheButtom' : ''] " >
-            <button @click.prevent="clickButton('Politique de confidentialité', !(showTypingIndicator), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
+            <button @click.prevent="clickButton(labelUserInput.legale, !(showTypingIndicator), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
               <img class="img-indicator-map" :src="imgUserInput.legale"/>
             </button>
           </div>
@@ -74,7 +74,7 @@
         <!-- MENU -->
         <div v-if="imgUserInput.menu != '' && imgUserInput.menu != undefined">
           <div :class="[showTypingIndicator || menuNotPass() ? 'cacheButtom' : ''] ">
-            <button class="sc-user-input--button-icon-wrapper" id="extraCarrousel" @click="clickButton('Menu', !(showTypingIndicator || menuNotPass()), true)" >
+            <button class="sc-user-input--button-icon-wrapper" id="extraCarrousel" @click="clickButton(labelUserInput.menu, !(showTypingIndicator || menuNotPass()), true)" >
               <img class="img-indicator-map" :src="imgUserInput.menu" />
             </button>
           </div>
@@ -82,7 +82,7 @@
         <!-- contenuSpecial1 --> <!-- || beginNotPass() -->
         <div v-if="imgUserInput.contenuSpecial1 != '' && imgUserInput.contenuSpecial1 != undefined">
           <div :class="[showTypingIndicator || menuNotPass()  ? 'cacheButtom' : '']">
-            <button @click="clickButton('Bonnes adresses', !(showTypingIndicator || menuNotPass() ), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
+            <button @click="clickButton(labelUserInput.contenuSpecial1, !(showTypingIndicator || menuNotPass() ), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
               <img class="img-indicator-map" :src="imgUserInput.contenuSpecial1" />
             </button>
           </div>
@@ -90,7 +90,7 @@
         <!-- contenuSpecial2 -->
         <div v-if="imgUserInput.contenuSpecial2 != '' && imgUserInput.contenuSpecial2 != undefined">
           <div :class="[showTypingIndicator || menuNotPass() ? 'cacheButtom' : '']"> 
-            <button @click="clickButton('En savoir plus', !(showTypingIndicator || menuNotPass() ), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
+            <button @click="clickButton(labelUserInput.contenuSpecial2, !(showTypingIndicator || menuNotPass() ), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
               <img class="img-indicator-map" :src="imgUserInput.contenuSpecial2" />
             </button>
           </div>
@@ -98,7 +98,7 @@
         <!-- contenuSpecial3 -->
         <div v-if="imgUserInput.contenuSpecial3 != '' && imgUserInput.contenuSpecial3 != undefined">
           <div :class="[showTypingIndicator || menuNotPass() ? 'cacheButtom' : '']">
-            <button @click="clickButton('En savoir +', !(showTypingIndicator || menuNotPass()), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
+            <button @click="clickButton(labelUserInput.contenuSpecial3, !(showTypingIndicator || menuNotPass()), false)" class="sc-user-input--button-icon-wrapper" id="extraCarrousel" >
               <img class="img-indicator-map" :src="imgUserInput.contenuSpecial3" />
             </button>
           </div>
@@ -106,7 +106,7 @@
         <!-- MAP -->
         <div v-if="imgUserInput.carte != '' && imgUserInput.carte != undefined">
           <div :class="[!(mapSetting.exist && calculNbRepBeforeFct() && !showTypingIndicator) ? 'cacheButtom' : '']">
-            <button @click="clickButton('Plan', (mapSetting.exist && calculNbRepBeforeFct() && !showTypingIndicator), false)" class="sc-user-input--button-icon-wrapper" id="showMap" tooltip="Map">
+            <button @click="clickButton(labelUserInput.carte, (mapSetting.exist && calculNbRepBeforeFct() && !showTypingIndicator), false)" class="sc-user-input--button-icon-wrapper" id="showMap" tooltip="Map">
               <img class="img-indicator-map" :src="imgUserInput.carte" />
             </button>
           </div>
@@ -213,6 +213,10 @@ export default {
       required: true
     },
     imgUserInput : {
+      type: Object,
+      required: false
+    },
+    labelUserInput : {
       type: Object,
       required: false
     },
@@ -492,7 +496,6 @@ export default {
     },
   },
   mounted() {
-    console.log("2d2bcc3a060bfe7b3a0db903f3520ee286e8f56184c49af742836d67e32ce3fc");
     
     this.$root.$on('focusUserInput', () => {
       if (this.$refs.userInput) {

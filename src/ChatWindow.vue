@@ -82,6 +82,7 @@
       :colors="colors" 
       :mapSetting="mapSetting"
       :imgUserInput="imgUserInput"
+      :labelUserInput="labelUserInput"
       :device="device"
       :showInputText="showInputText"
       :onlyButton="false"
@@ -185,6 +186,10 @@ export default {
       required: true
     },
     imgUserInput : {
+      type: Object,
+      required: false
+    },
+    labelUserInput : {
       type: Object,
       required: false
     },
