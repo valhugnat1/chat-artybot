@@ -13,11 +13,11 @@
 
               <div class="sc-suggestions-element-img" :style="{'height' : setHeightImg(suggestion), 'background-image': 'url(' + suggestion.img + ')'}" > </div>
 
-              <div style="text-align: center; line-height: 40px; font-size: 16px;" :style="[ colors.carrousel !== undefined ? {color : colors.carrousel.title} : {'color': '#295ca3'}]">{{suggestion.choice}}</div>
+              <div style="text-align: center; font-size: 16px;" :style="[ colors.carrousel !== undefined ? {color : colors.carrousel.title} : {'color': '#295ca3'}]">{{suggestion.choice}}</div>
 
               <div style="margin-bottom: 0.5em; text-align: left; text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; 
-              padding: 0px 8px 0px 8px; height: 5.8em; " :style="[ colors.carrousel !== undefined ? {color : colors.carrousel.textBody} : {'color': 'black'}]" v-if="suggestion.description !== undefined"> 
-              <span v-if="suggestion.localisation !== undefined"> {{distanceGoogle[idx]}} {{tempsGoogle[idx]}} <br/></span> {{suggestion.description}}</div> 
+              padding: 0px 8px 0px 8px; " :style="[ colors.carrousel !== undefined ? {color : colors.carrousel.textBody} : {'color': 'black'}]" v-if="suggestion.description !== undefined"> 
+              <span v-if="suggestion.localisation !== undefined"> {{distanceGoogle[idx]}} {{tempsGoogle[idx]}} </span> {{suggestion.description}}</div> 
 
               <div style="padding : 0.5em; text-align: center; border: 1px solid #dedede; font-size: 16px;" 
               :style="[ colors.carrousel !== undefined ? {color : colors.carrousel.title} : {'color': '#295ca3'}]" v-on:click.stop.prevent="getGoogleAdress(suggestion)" 
@@ -215,12 +215,12 @@ export default {
     setHeightImg : function (suggestion) {
 
       var elemNoneDisplay = [suggestion.description, suggestion.boutonSavoirPlus, suggestion.telephone, suggestion.localisation].filter(x => x==undefined).length
-      if (elemNoneDisplay == 4) elemNoneDisplay = 5 
+      if (elemNoneDisplay == 4) elemNoneDisplay = 5; 
       if (window.innerWidth > 450) 
       {
-        return (90 + elemNoneDisplay*30).toString() + "px"
+        return "16em" //(90 + elemNoneDisplay*30).toString() + "px"
       } else {
-        return (15 + elemNoneDisplay*3.5).toString() + "vh"
+        return "16em" //(15 + elemNoneDisplay*3.5).toString() + "vh"
       }
     },
     getGoogleAdress : function (suggestion) {
